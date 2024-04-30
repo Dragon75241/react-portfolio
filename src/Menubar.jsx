@@ -1,7 +1,6 @@
 import "./styles/Menubar.css";
 import { Menu } from "antd";
 
-
 const App = () => {
   const menuItems = [
     {
@@ -30,30 +29,46 @@ const App = () => {
     },
     {
       key: "path",
-      label: "Pathways"
+      label: "Pathways",
     },
     {
       key: "career",
-      label: "School Career"
+      label: "School Career",
+      children: [
+        { key: "six", label: "6th Grade" },
+        { key: "seven", label: "7th Grade" },
+        { key: "eight", label: "8th Grade" },
+      ],
     },
     {
       key: "skill",
-      label: "Skills"
-    }
+      label: "Skills",
+    },
   ];
+
+  const renderMenuItem = (item) => {
+    if (item.type === "divider") {
+      return <Menu.Divider key={item.key} style={item.style} />;
+    }
+
+    if (item.children) {
+      return (
+        <Menu.SubMenu key={item.key} title={item.label} icon={item.icon}>
+          {item.children.map(renderMenuItem)}
+        </Menu.SubMenu>
+      );
+    }
+
+    return (
+      <Menu.Item key={item.key} icon={item.icon}>
+        {item.label}
+      </Menu.Item>
+    );
+  };
 
   return (
     <Menu mode="horizontal" className="menubar backdrop:inset-10">
-      {menuItems.map((item, index) => {
-        if (item.type === "divider") {
-          return <Menu.Divider key={index} style={item.style} />;
-        }
-        return (
-          <Menu.Item key={item.key} icon={item.icon}>
-            {item.label}
-          </Menu.Item>
-        );
-      })}
+      {menuItems.map(renderMenuItem)}
     </Menu>
   );
 };

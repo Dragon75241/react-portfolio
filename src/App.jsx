@@ -1,12 +1,16 @@
-import "./styles/App.css";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import AboutMe from './aboutme/page.jsx'; // Adjust the import path as necessary
+import './styles/App.css';
 
-function App() {
-  return (
-    <div>
-      <div className="background backdrop:inset-10" >
+const App = () => {
+ return (
+    <Router>
+      <Switch>
+        <Route path="/aboutme" component={AboutMe} />
+      </Switch>
+    </Router>
+ );
+};
 
-      </div>
-    </div>
-  );
-}
 export default App;

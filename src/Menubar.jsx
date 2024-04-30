@@ -38,7 +38,7 @@ const App = () => {
         { key: "six", label: "6th Grade" },
         { key: "seven", label: "7th Grade" },
         { key: "eight", label: "8th Grade" },
-{ key:"nine", label: "9th Grade
+{ key:"nine", label: "9th Grade"}
       ],
     },
     {

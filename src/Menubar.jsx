@@ -60,12 +60,19 @@ function Menubar() {
         algorithm: darkAlgorithm,
       }}
     >
-      <Menu
-        onClick={onClick}
-        selectedKeys={[current]}
-        mode="horizontal"
-        items={items}
-      />
+      <div className="flex justify-between items-center">
+        <Menu.Item key="leftItem" onClick={onClick}>
+          Left Item
+        </Menu.Item>
+        <div className="flex justify-end">
+          <Menu
+            onClick={onClick}
+            selectedKeys={[current]}
+            mode="horizontal"
+            items={items}
+          />
+        </div>
+      </div>
     </ConfigProvider>
   );
 }

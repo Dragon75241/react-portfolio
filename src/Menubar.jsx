@@ -2,7 +2,7 @@ import "./styles/Menubar.css";
 import { Menu, ConfigProvider, theme } from "antd";
 import { Link } from 'react-router-dom';
 
-const App = () => {
+const Menubar = ({ router }) => {
   const menuItems = [
     {
       key: "home",
@@ -77,4 +77,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Menubar;

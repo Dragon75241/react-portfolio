@@ -68,7 +68,7 @@ const App = () => {
   };
 
   return (<ConfigProvider
-theme {{algorithm: theme.darkAlgorithm}}
+theme={{algorithm: theme.darkAlgorithm}}
     <Menu mode="horizontal" className="menubar backdrop:inset-10">
       {menuItems.map(renderMenuItem)}
     </Menu></ConfigProvider>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import AboutMe from './aboutme/page.jsx'; // Adjust the import path as necessary
+import AboutMe from './aboutme/page'; // Adjust the import path as necessary
 import './styles/App.css';
 
 const App = () => {

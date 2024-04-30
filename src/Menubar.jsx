@@ -54,6 +54,12 @@ function Menubar() {
     setCurrent(e.key);
   };
 
+  const renderLeftItem = () => (
+    <Menu.Item key="leftItem" onClick={onClick}>
+      Left Item
+    </Menu.Item>
+  );
+
   return (
     <ConfigProvider
       theme={{
@@ -61,17 +67,12 @@ function Menubar() {
       }}
     >
       <div className="flex justify-between items-center">
-        <div className="mr-auto">
-          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-            Left Item
-          </a>
-        </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end w-full">
           <Menu
             onClick={onClick}
             selectedKeys={[current]}
             mode="horizontal"
-            items={items}
+            items={[renderLeftItem(), ...items]}
           />
         </div>
       </div>

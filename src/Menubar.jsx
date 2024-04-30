@@ -1,5 +1,5 @@
 import "./styles/Menubar.css";
-import { Menu } from "antd";
+import { Menu, ConfigProvider, theme} from "antd";
 
 const App = () => {
   const menuItems = [
@@ -67,10 +67,11 @@ const App = () => {
     );
   };
 
-  return (
+  return (<ConfigProvider
+theme {{algorithm: theme.darkAlgorithm}}
     <Menu mode="horizontal" className="menubar backdrop:inset-10">
       {menuItems.map(renderMenuItem)}
-    </Menu>
+    </Menu></ConfigProvider>
   );
 };
 

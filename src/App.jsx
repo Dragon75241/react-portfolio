@@ -6,6 +6,7 @@ import {
 import { useState } from "react";
 import { Menu } from "antd";
 import "./styles/App.css";
+import { ConfigProvider, theme, Button, Card } from "antd";
 
 const items = [
   {
@@ -55,20 +56,37 @@ const items = [
 function App() {
   const [current, setCurrent] = useState("mail");
 
+  // eslint-disable-next-line no-unused-vars
+  const { defaultAlgorithm, darkAlgorithm } = theme;
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   const onClick = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
   };
 
+  const handleClick = () => {
+    setIsDarkMode((previousValue) => !previousValue);
+  };
+
   return (
-    <>
+    <ConfigProvider
+      theme={{
+        algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+      }}
+    >
+      <Card style={{ width: "max-content" }}>
+        <Button onClick={handleClick}>
+          Change Theme to {isDarkMode ? "Light" : "Dark"}
+        </Button>
+      </Card>
       <Menu
         onClick={onClick}
         selectedKeys={[current]}
         mode="horizontal"
         items={items}
       />
-    </>
+    </ConfigProvider>
   );
 }
 export default App;

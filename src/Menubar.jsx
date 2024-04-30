@@ -1,27 +1,20 @@
-import {
-  AppstoreOutlined,
-  MailOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
-import "./styles/App.css";
-import Menubar from "./Menubar";
+import { ConfigProvider, theme } from "antd";
+import { useState } from "react";
+import { Menu } from "antd";
 
 const items = [
   {
     label: "Navigation One",
     key: "mail",
-    icon: <MailOutlined />,
   },
   {
     label: "Navigation Two",
     key: "app",
-    icon: <AppstoreOutlined />,
     disabled: true,
   },
   {
     label: "Navigation Three - Submenu",
     key: "SubMenu",
-    icon: <SettingOutlined />,
     children: [
       {
         type: "group",
@@ -51,9 +44,30 @@ const items = [
   },
 ];
 
-function App() {
+function Menubar() {
+  const [current, setCurrent] = useState("mail");
+
+  const { darkAlgorithm } = theme;
+
+  const onClick = (e) => {
+    console.log("click ", e);
+    setCurrent(e.key);
+  };
+
   return (
-    <Menubar/>
+    <ConfigProvider
+      theme={{
+        algorithm: darkAlgorithm,
+      }}
+    >
+      <Menu
+        onClick={onClick}
+        selectedKeys={[current]}
+        mode="horizontal"
+        items={items}
+      />
+    </ConfigProvider>
   );
 }
-export default App;
+
+export default Menubar;

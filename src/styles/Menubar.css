@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Lato-Regular";
+  src: url("../assets/fonts/Lato-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.menubar {
+  font-family: "Lato-Regular", sans-serif;
+  padding: 8px 12px 12px 12px;
+  font-size: 18px;
+}
+.menubar *:focus {
+  outline: none;
+}
+
+.ant-menu-horizontal,
+.ant-menu-item::after,
+.ant-menu-submenu::after {
+  border: none !important;
+}
+.ant-menu-item-divider {
+  border-bottom: none !important;
+  border-top: none !important;
+}
